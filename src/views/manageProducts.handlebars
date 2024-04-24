@@ -1,0 +1,26 @@
+<h1> Modificar o eliminar Productos </h1>
+
+{{#each products}}
+  <div>
+    <h2>{{title}}</h2>
+    <p> ID: {{id}} </p>
+    <p>{{description}}</p>
+    <p>Price: ${{price}}</p>
+    <p>Category: {{category}} </p>
+    <a href="/updateProduct/{{id}}"> Actualizar Producto </a>
+
+    <form action="/api/products/delete/{{id}}" method="POST">
+      <button type="submit">Eliminar</button>
+    </form>
+
+  </div>
+{{/each}}
+
+{{#if hasPrevPage}}
+  <a href="/manageProducts?page={{prevPage}}"> Anterior </a>
+{{/if}}
+{{#if hasNextPage}}
+  <a href="/manageProducts?page={{nextPage}}"> Siguiente </a>
+{{/if}}
+
+<p>Pagina {{currentPage}} de {{totalPages}} </p>
